@@ -74,7 +74,7 @@ export default function OurModules() {
           {modules.map((module, index) => (
             <div
               key={index}
-              className="group relative bg-white border border-gray-100 p-10 rounded-[40px] 
+              className="group relative bg-white border border-gray-300 p-10 rounded-[40px] 
                          transition-all duration-500 ease-in-out
                          hover:bg-[#013228] hover:-translate-y-2 hover:shadow-[0_30px_60px_-15px_rgba(1,50,40,0.4)] 
                          cursor-pointer flex flex-col h-full"
