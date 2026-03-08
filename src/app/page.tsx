@@ -5,6 +5,7 @@ import OurModules from "@/components/homepage/OurModules";
 import PlatformBenefits from "@/components/homepage/PlatformBenefits";
 import Pricing from "@/components/homepage/Pricing";
 import Testimonials from "@/components/homepage/Testimonials";
+import RecentBlogs from "@/components/homepage/RecentBlogs";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <PlatformBenefits />
       <Pricing />
       <Faq />
+      <RecentBlogs />
     </div>
   );
 }

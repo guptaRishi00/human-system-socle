@@ -53,6 +53,7 @@ export default function Header() {
     { name: "About", href: "/about" },
     { name: "Modules", href: "/modules" },
     { name: "Pricing", href: "/pricing" },
+    { name: "Blog", href: "/blog" },
     { name: "Contact Us", href: "/contact" },
   ];
 
@@ -113,8 +114,8 @@ export default function Header() {
       {/* Mobile Menu Overlay */}
       <div
         className={`fixed inset-0 bg-[#013228] z-[99] transition-all duration-500 ease-in-out lg:hidden ${mobileOpen
-            ? "opacity-100 visible"
-            : "opacity-0 invisible pointer-events-none"
+          ? "opacity-100 visible"
+          : "opacity-0 invisible pointer-events-none"
           }`}
         style={{ top: 0 }}
       >
@@ -127,8 +128,8 @@ export default function Header() {
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
                 className={`text-3xl font-bold text-white/90 hover:text-[#E3FFCD] transition-all duration-300 py-4 border-b border-white/5 ${mobileOpen
-                    ? "translate-x-0 opacity-100"
-                    : "-translate-x-8 opacity-0"
+                  ? "translate-x-0 opacity-100"
+                  : "-translate-x-8 opacity-0"
                   }`}
                 style={{ transitionDelay: `${index * 75}ms` }}
               >
