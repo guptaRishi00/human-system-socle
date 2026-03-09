@@ -42,16 +42,10 @@ export default function PlatformBenefits() {
           <div className="lg:col-span-6 order-2 lg:order-1">
             <div className="relative group">
               {/* Decorative Background Element */}
-              <div className="absolute -inset-4 bg-[#013228]/5 rounded-[32px] scale-105" />
 
               {/* Image Container / Browser Frame */}
-              <div className="relative bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100 overflow-hidden">
-                <div className="bg-gray-50 border-b border-gray-100 px-4 py-3 flex gap-1.5">
-                  <div className="w-2.5 h-2.5 rounded-full bg-gray-200" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-gray-200" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-gray-200" />
-                </div>
-                <div className="aspect-[4/3] relative">
+              <div className="relative bg-white rounded-2xl border border-gray-100 overflow-hidden">
+                <div className="aspect-4/4 relative">
                   <Image
                     src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80"
                     alt="Human Systems Dashboard"

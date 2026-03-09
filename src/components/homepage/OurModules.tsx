@@ -51,7 +51,7 @@ const modules = [
 export default function OurModules() {
   return (
     <section className="py-20 px-6 bg-[#FCFDFB]">
-      <div className="max-w-[85rem] mx-auto">
+      <div className="max-w-340 mx-auto">
         {/* Header Section */}
         <div className="flex flex-col items-center text-center mb-16">
           <div className="w-fit px-6 py-1.5 border border-gray-900 rounded-full mb-6">
@@ -75,37 +75,37 @@ export default function OurModules() {
             <div
               key={index}
               className="group relative bg-white border border-gray-300 p-10 rounded-[40px] 
-                         transition-all duration-500 ease-in-out
-                         hover:bg-[#013228] hover:-translate-y-2 hover:shadow-[0_30px_60px_-15px_rgba(1,50,40,0.4)] 
+                         transition-all 
+                         hover:border-[#013228] 
                          cursor-pointer flex flex-col h-full"
             >
               {/* Icon */}
-              <div className="text-gray-900 group-hover:text-white mb-8 transition-all duration-500 transform group-hover:scale-110 origin-left">
+              <div className="text-gray-900 group-hover:text-gray-900 mb-8 transition-all duration-500 transform group-hover:scale-110 origin-left">
                 {module.icon}
               </div>
 
               {/* Title */}
-              <h3 className="text-2xl font-bold text-gray-900 group-hover:text-white mb-4 transition-colors duration-500">
+              <h3 className="text-2xl font-bold text-gray-900 group-hover:text-gray-900 mb-4 transition-colors duration-500">
                 {module.title}
               </h3>
 
               {/* Description */}
-              <p className="text-gray-500 group-hover:text-gray-300 mb-10 leading-relaxed transition-colors duration-500 flex-grow">
+              <p className="text-gray-500 group-hover:text-gray-500 mb-10 leading-relaxed transition-colors duration-500 flex-grow">
                 {module.description}
               </p>
 
               {/* The "Read More" Full Button Transformation */}
               <div
                 className="w-fit inline-flex items-center gap-3 px-0 py-2 rounded-full transition-all duration-500 ease-in-out
-                              group-hover:bg-white group-hover:px-6 group-hover:py-3"
+                              group-hover:bg-[#013228] group-hover:px-6 group-hover:py-3"
               >
-                <span className="text-sm font-bold uppercase tracking-wider text-gray-900 group-hover:text-[#013228] transition-colors duration-500">
+                <span className="text-sm font-bold uppercase tracking-wider text-gray-900 group-hover:text-white transition-colors duration-500">
                   Read More
                 </span>
 
                 <HiOutlineArrowNarrowRight
                   size={20}
-                  className="text-gray-900 group-hover:text-[#013228] transition-all duration-500 group-hover:translate-x-1"
+                  className="text-gray-900 group-hover:text-white transition-all duration-500 group-hover:translate-x-1"
                 />
               </div>
             </div>

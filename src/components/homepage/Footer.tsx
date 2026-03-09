@@ -48,9 +48,7 @@ const Footer = () => {
       <div className="border-b border-emerald-800/30">
         <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col lg:flex-row items-center justify-between gap-8">
           <div>
-            <h3 className="text-2xl font-extrabold mb-2">
-              Stay in the Loop
-            </h3>
+            <h3 className="text-2xl font-extrabold mb-2">Stay in the Loop</h3>
             <p className="text-emerald-100/50 text-sm max-w-md">
               Get product updates, HR insights, and tips delivered to your
               inbox. No spam, ever.
@@ -77,7 +75,7 @@ const Footer = () => {
           <div className="space-y-6">
             <Link href="/">
               <Image
-                src="/logo-3.svg"
+                src="/logo-6.svg"
                 alt="Human Systems Logo"
                 width={180}
                 height={40}

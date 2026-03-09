@@ -1,142 +1,194 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiOutlineArrowLeft, HiOutlineArrowRight } from "react-icons/hi";
 
-const testimonialContent = [
+interface Testimonial {
+  img: string;
+  role: string;
+  name: string;
+  company: string;
+  content: string;
+}
+
+const testimonials: Testimonial[] = [
   {
-    img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&auto=format&fit=crop&q=60",
+    img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600",
     role: "HR Director",
     name: "Sophie Laurent",
     company: "TechFlow Systems",
     content:
-      "Human Systems has completely transformed how we manage our HR operations. The leave management and payroll automation alone have saved us countless hours each month.",
+      "Human Systems has completely transformed how we manage our HR operations. The leave management is seamless.",
   },
   {
-    img: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=600&auto=format&fit=crop&q=60",
+    img: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=600",
     role: "Operations Manager",
     name: "Marc Dubois",
     company: "Global Logistics",
     content:
-      "The employee self-service portal has dramatically reduced our HR team's workload. Employees can now access their payslips and update profiles without any manual intervention.",
+      "The employee self-service portal has dramatically reduced our HR team's workload. Highly recommended.",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600",
+    role: "CEO",
+    name: "Thomas Wright",
+    company: "Innovate Ltd",
+    content:
+      "Payroll automation used to be a nightmare. Now it's a single click. A game changer for our finance team.",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600",
+    role: "Product Lead",
+    name: "Elena Rodriguez",
+    company: "Creative Pulse",
+    content:
+      "The interface is so intuitive that our employees didn't even need training. Best HR software we've used.",
   },
 ];
 
-export default function Testimonials() {
-  const [mounted, setMounted] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
+// Create a loop-friendly array by padding the start and end
+const extendedTestimonials = [
+  ...testimonials,
+  ...testimonials,
+  ...testimonials,
+];
 
-  useEffect(() => setMounted(true), []);
+export default function InfiniteTestimonials() {
+  // Start at the first element of the middle set
+  const [currentIndex, setCurrentIndex] = useState(testimonials.length);
+  const [visibleCards, setVisibleCards] = useState(3);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(true);
 
-  const nextStep = useCallback(() => {
-    setCurrentIndex((prev) => (prev + 1) % testimonialContent.length);
+  // FIX: Explicitly type the ref to handle both browser and node environments
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => {
+    const updateSize = () => {
+      if (window.innerWidth >= 1024) setVisibleCards(3);
+      else if (window.innerWidth >= 640) setVisibleCards(2);
+      else setVisibleCards(1);
+    };
+    updateSize();
+    window.addEventListener("resize", updateSize);
+    return () => window.removeEventListener("resize", updateSize);
   }, []);
 
-  const prevStep = useCallback(() => {
-    setCurrentIndex(
-      (prev) =>
-        (prev - 1 + testimonialContent.length) % testimonialContent.length,
-    );
-  }, []);
+  const nextStep = () => {
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => prev + 1);
+  };
 
-  if (!mounted) return <section className="py-24 bg-[#F9FBF8] h-[550px]" />;
+  const prevStep = () => {
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => prev - 1);
+  };
+
+  // Auto-play logic with fix for "clearInterval" type error
+  useEffect(() => {
+    if (!isPaused) {
+      intervalRef.current = setInterval(nextStep, 4000);
+    }
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [isPaused]);
+
+  // Infinite Loop Teleport Logic
+  const handleUpdate = () => {
+    // If we've reached the end of the middle set + 1
+    if (currentIndex >= testimonials.length * 2) {
+      setIsTransitioning(false); // Disable animation for the "snap"
+      setCurrentIndex(testimonials.length);
+    }
+    // If we've reached the beginning of the middle set - 1
+    if (currentIndex < testimonials.length) {
+      setIsTransitioning(false); // Disable animation for the "snap"
+      setCurrentIndex(testimonials.length * 2 - 1);
+    }
+  };
 
   return (
-    <section className="py-24 px-6 bg-[#F9FBF8]">
-      <div className="max-w-6xl mx-auto">
-        <div className="bg-white rounded-[32px] p-8 lg:p-16 shadow-sm border border-gray-100">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-            {/* Left: Image (4 columns) */}
-            <div className="lg:col-span-4">
-              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-[#013228]/5">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={currentIndex}
-                    initial={{ opacity: 0, scale: 1.05 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.4 }}
-                    className="absolute inset-0"
-                  >
-                    <Image
-                      src={testimonialContent[currentIndex].img}
-                      alt={testimonialContent[currentIndex].name}
-                      fill
-                      className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
-                    />
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-            </div>
-
-            {/* Right: Content (8 columns) */}
-            <div className="lg:col-span-8 flex flex-col h-full">
-              {/* Top: The Quote */}
-              <div className="flex-grow">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={currentIndex}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <p className="text-3xl md:text-4xl font-bold text-gray-900 leading-[1.2] mb-12">
-                      "{testimonialContent[currentIndex].content}"
-                    </p>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-
-              {/* Bottom: Attribution & Navigation Controls Combined */}
-              <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pt-8 border-t border-gray-100">
-                <div className="space-y-1">
-                  <h4 className="text-xl font-bold text-[#013228]">
-                    {testimonialContent[currentIndex].name}
-                  </h4>
-                  <p className="text-gray-500 font-medium">
-                    {testimonialContent[currentIndex].role} —{" "}
-                    {testimonialContent[currentIndex].company}
-                  </p>
-                </div>
-
-                {/* Navigation Unit */}
-                <div className="flex items-center gap-6">
-                  {/* Pagination Dots */}
-                  <div className="flex gap-2">
-                    {testimonialContent.map((_, i) => (
-                      <div
-                        key={i}
-                        className={`h-1.5 rounded-full transition-all duration-300 ${
-                          i === currentIndex
-                            ? "w-8 bg-[#013228]"
-                            : "w-2 bg-gray-200"
-                        }`}
-                      />
-                    ))}
-                  </div>
-
-                  {/* Arrow Buttons */}
-                  <div className="flex items-center bg-gray-50 rounded-full p-1 border border-gray-100">
-                    <button
-                      onClick={prevStep}
-                      className="p-3 rounded-full hover:bg-white hover:shadow-sm text-gray-500 hover:text-[#013228] transition-all"
-                    >
-                      <HiOutlineArrowLeft size={20} />
-                    </button>
-                    <button
-                      onClick={nextStep}
-                      className="p-3 rounded-full hover:bg-white hover:shadow-sm text-gray-500 hover:text-[#013228] transition-all"
-                    >
-                      <HiOutlineArrowRight size={20} />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+    <section className="py-24 px-6 bg-[#F9FBF8] overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div>
+            <h2 className="text-4xl font-bold text-[#013228]">
+              What our clients say
+            </h2>
+            <p className="text-gray-500 mt-2">
+              Trusted by leading HR teams worldwide.
+            </p>
           </div>
+
+          <div className="flex items-center bg-white rounded-full p-1 border border-gray-100 shadow-sm">
+            <button
+              onClick={prevStep}
+              className="p-3 rounded-full hover:bg-gray-50 text-gray-500 transition-all active:scale-90"
+            >
+              <HiOutlineArrowLeft size={20} />
+            </button>
+            <button
+              onClick={nextStep}
+              className="p-3 rounded-full hover:bg-gray-50 text-gray-500 transition-all active:scale-90"
+            >
+              <HiOutlineArrowRight size={20} />
+            </button>
+          </div>
+        </div>
+
+        <div
+          className="relative -mx-3"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <motion.div
+            className="flex"
+            initial={false}
+            animate={{ x: `-${currentIndex * (100 / visibleCards)}%` }}
+            onAnimationComplete={handleUpdate}
+            transition={
+              isTransitioning
+                ? {
+                    duration: 0.7,
+                    ease: [0.32, 0.72, 0, 1],
+                  }
+                : { duration: 0 }
+            } // Instant jump
+          >
+            {extendedTestimonials.map((item, index) => (
+              <div
+                key={index}
+                style={{ flex: `0 0 ${100 / visibleCards}%` }}
+                className="px-3"
+              >
+                <div className="bg-white rounded-[32px] p-8 border border-gray-100 shadow-sm h-full flex flex-col group hover:border-[#013228]/20 transition-all duration-300">
+                  <div className="relative w-14 h-14 rounded-2xl overflow-hidden mb-6">
+                    <Image
+                      src={item.img}
+                      alt={item.name}
+                      fill
+                      className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                    />
+                  </div>
+
+                  <p className="text-lg text-gray-700 leading-relaxed mb-8 flex-grow">
+                    "{item.content}"
+                  </p>
+
+                  <div className="pt-6 border-t border-gray-100">
+                    <h4 className="font-bold text-[#013228]">{item.name}</h4>
+                    <p className="text-sm text-gray-500 font-medium">
+                      {item.role} <span className="text-gray-300 mx-1">|</span>{" "}
+                      {item.company}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </motion.div>
         </div>
       </div>
     </section>

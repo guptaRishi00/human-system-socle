@@ -32,11 +32,11 @@ export default function EmployeeSelfService() {
             {/* Feature List - Modern Vertical Style */}
             <div className="mt-12 space-y-8 relative">
               {/* Vertical line connector */}
-              <div className="absolute left-[11px] top-2 bottom-2 w-[1px] bg-gray-200"></div>
+              <div className="absolute left-2.75 top-2 bottom-2 w-px bg-gray-200"></div>
 
               {/* Feature 1 */}
               <div className="relative pl-10">
-                <div className="absolute left-0 top-1 w-[22px] h-[22px] rounded-full bg-[#013228] border-4 border-white shadow-sm flex items-center justify-center">
+                <div className="absolute left-0 top-1 w-5.5 h-5.5 rounded-full bg-[#013228] border-4 border-white shadow-sm flex items-center justify-center">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#E3FFCD]"></div>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
@@ -50,7 +50,7 @@ export default function EmployeeSelfService() {
 
               {/* Feature 2 */}
               <div className="relative pl-10">
-                <div className="absolute left-0 top-1 w-[22px] h-[22px] rounded-full bg-white border-2 border-gray-300 shadow-sm"></div>
+                <div className="absolute left-0 top-1 w-5.5 h-5.5 rounded-full bg-white border-2 border-gray-300 shadow-sm"></div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
                   Interactive Org Directory
                 </h3>
@@ -63,7 +63,7 @@ export default function EmployeeSelfService() {
 
             {/* CTA Button */}
             <div className="mt-12">
-              <button className="group flex items-center gap-3 bg-[#013228] text-[#E3FFCD] px-8 py-4 rounded-xl font-bold transition-all hover:scale-[1.02] active:scale-[0.98] shadow-xl shadow-[#013228]/10">
+              <button className="group flex items-center gap-3 border border-[#013228] text-gray-900 px-8 py-4 rounded-full hover:bg-[#013228] cursor-pointer hover:text-white font-bold transition-all">
                 Start Empowering Your Team
                 <HiOutlineArrowNarrowRight className="text-xl group-hover:translate-x-1 transition-transform" />
               </button>
@@ -73,25 +73,13 @@ export default function EmployeeSelfService() {
           {/* Right Visual Area */}
           <div className="relative">
             {/* Background Accent Shape */}
-            <div className="absolute -inset-4 bg-[#013228]/5 rounded-[40px] -rotate-1 scale-105"></div>
 
             {/* The "Floating" Browser Window */}
-            <div className="relative bg-white rounded-2xl shadow-[0_20px_50px_rgba(1,50,40,0.15)] border border-gray-200 overflow-hidden transition-transform duration-700 hover:scale-[1.01]">
+            <div className="relative bg-white rounded-2xl  border border-gray-200 overflow-hidden">
               {/* Browser Header */}
-              <div className="bg-gray-50/50 border-b border-gray-100 px-5 py-4 flex items-center justify-between">
-                <div className="flex gap-2">
-                  <div className="w-3 h-3 rounded-full bg-gray-200" />
-                  <div className="w-3 h-3 rounded-full bg-gray-200" />
-                  <div className="w-3 h-3 rounded-full bg-gray-200" />
-                </div>
-                <div className="px-6 py-1 bg-white border border-gray-100 rounded-md text-[10px] text-gray-400 font-medium tracking-wide">
-                  app.yourcompany.com
-                </div>
-                <div className="w-10"></div> {/* Spacer */}
-              </div>
 
               {/* Image Container */}
-              <div className="bg-gray-50 aspect-[4/3] relative">
+              <div className="bg-gray-50 aspect-4/4 relative">
                 <Image
                   src="/dashboard-1.png"
                   alt="Employee Portal UI"
@@ -102,7 +90,7 @@ export default function EmployeeSelfService() {
             </div>
 
             {/* Floating Detail Card */}
-            <div className="absolute -bottom-8 -right-8 bg-white p-6 rounded-2xl shadow-2xl border border-gray-100 hidden md:block max-w-[200px]">
+            <div className="absolute -bottom-8 -right-8 bg-white p-6 rounded-2xl shadow-xl border border-gray-100 hidden md:block max-w-50">
               <div className="flex items-center gap-2 text-[#013228] mb-2">
                 <HiCheckCircle size={20} />
                 <span className="text-xs font-bold uppercase tracking-wider">

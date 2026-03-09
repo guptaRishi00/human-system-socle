@@ -62,7 +62,7 @@ export default function Header() {
       ref={headerRef}
       className="w-full relative transition-transform duration-300 z-[100] py-3"
     >
-      <div className="flex items-center justify-between max-w-7xl mx-auto px-6">
+      <div className="flex items-center justify-between max-w-344 mx-auto px-6">
         {/* Logo */}
         <Link href="/" onClick={() => setMobileOpen(false)}>
           <Image
@@ -90,9 +90,12 @@ export default function Header() {
         {/* Desktop CTA + Mobile toggle */}
         <div className="flex items-center gap-4">
           <Link href="/contact" className="hidden sm:block">
-            <button className="flex items-center gap-2 bg-[#E3FFCD] rounded-full py-3 px-6 text-xs uppercase tracking-[0.1em] font-bold text-[#013228] hover:scale-105 transition-transform active:scale-95 shadow-lg shadow-[#000]/10">
+            <button className="flex items-center gap-2 bg-[#E3FFCD] rounded-full py-3 px-6 text-xs uppercase tracking-[0.1em] font-bold text-[#013228] cursor-pointer hover:bg-[#d4ffb8] transition-colors group">
               Get Started
-              <IoIosArrowRoundForward size={24} />
+              <IoIosArrowRoundForward
+                size={24}
+                className="transition-transform duration-300 group-hover:translate-x-2"
+              />
             </button>
           </Link>
 
@@ -113,10 +116,11 @@ export default function Header() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 bg-[#013228] z-[99] transition-all duration-500 ease-in-out lg:hidden ${mobileOpen
-          ? "opacity-100 visible"
-          : "opacity-0 invisible pointer-events-none"
-          }`}
+        className={`fixed inset-0 bg-[#013228] z-[99] transition-all duration-500 ease-in-out lg:hidden ${
+          mobileOpen
+            ? "opacity-100 visible"
+            : "opacity-0 invisible pointer-events-none"
+        }`}
         style={{ top: 0 }}
       >
         <div className="flex flex-col h-full pt-24 px-8 pb-8">
@@ -127,10 +131,11 @@ export default function Header() {
                 key={index}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className={`text-3xl font-bold text-white/90 hover:text-[#E3FFCD] transition-all duration-300 py-4 border-b border-white/5 ${mobileOpen
-                  ? "translate-x-0 opacity-100"
-                  : "-translate-x-8 opacity-0"
-                  }`}
+                className={`text-3xl font-bold text-white/90 hover:text-[#E3FFCD] transition-all duration-300 py-4 border-b border-white/5 ${
+                  mobileOpen
+                    ? "translate-x-0 opacity-100"
+                    : "-translate-x-8 opacity-0"
+                }`}
                 style={{ transitionDelay: `${index * 75}ms` }}
               >
                 {link.name}
@@ -141,9 +146,12 @@ export default function Header() {
           {/* Mobile CTA */}
           <div className="pt-6 border-t border-white/10">
             <Link href="/contact" onClick={() => setMobileOpen(false)}>
-              <button className="w-full flex items-center justify-center gap-2 bg-[#E3FFCD] rounded-2xl py-4 px-6 text-sm uppercase tracking-[0.1em] font-bold text-[#013228] active:scale-95 transition-transform shadow-lg">
+              <button className="group w-full flex items-center justify-center gap-2 bg-[#E3FFCD] rounded-2xl py-4 px-6 text-sm uppercase tracking-[0.1em] font-bold text-[#013228] hover:bg-[#013228] hover:text-[#E3FFCD] transition-all duration-300">
                 Get Started
-                <IoIosArrowRoundForward size={24} />
+                <IoIosArrowRoundForward
+                  size={24}
+                  className="transition-transform duration-300 group-hover:translate-x-2"
+                />
               </button>
             </Link>
           </div>

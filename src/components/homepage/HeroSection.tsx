@@ -30,16 +30,22 @@ export default function HeroSection() {
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-5 w-full sm:w-auto">
             <Link href="/contact">
-              <button className="flex items-center justify-center gap-2 bg-[#013228] rounded-full py-3 px-5 text-sm uppercase tracking-wide font-semibold text-[#E3FFCD] w-full sm:w-auto">
+              <button className="group cursor-pointer flex items-center justify-center gap-2 bg-[#013228] rounded-full py-3 px-5 text-sm uppercase tracking-wide font-semibold text-[#E3FFCD] w-full sm:w-auto transition-all">
                 Request a Demo
-                <IoIosArrowRoundForward size={30} />
+                <IoIosArrowRoundForward
+                  size={30}
+                  className="transition-transform duration-300 group-hover:translate-x-1"
+                />
               </button>
             </Link>
 
             <Link href="/modules">
-              <button className="flex items-center justify-center gap-2 border border-gray-900 rounded-full py-3 px-5 text-sm uppercase tracking-wide font-semibold text-gray-900 hover:bg-gray-900 hover:text-white hover:border-white transition-all w-full sm:w-auto">
+              <button className="flex group items-center justify-center gap-2 border border-gray-900 rounded-full py-3 px-5 text-sm uppercase tracking-wide font-semibold text-gray-900 hover:bg-[#013228] cursor-pointer hover:text-white hover:border-white w-full sm:w-auto">
                 Learn More
-                <IoIosArrowRoundForward size={30} />
+                <IoIosArrowRoundForward
+                  size={30}
+                  className="transition-transform duration-300 group-hover:translate-x-1"
+                />
               </button>
             </Link>
           </div>
@@ -47,7 +53,7 @@ export default function HeroSection() {
       </div>
 
       {/* Right Image - hidden below lg */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden lg:block">
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden lg:block rounded-l-2xl overflow-hidden">
         <Image
           src="/dashboard-1.png"
           alt="Hero Illustration"

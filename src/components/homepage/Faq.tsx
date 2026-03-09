@@ -47,9 +47,6 @@ const Faq = () => {
             Find answers to the most common questions about Human Systems'
             features, security, and getting started with the platform.
           </p>
-          <button className="flex items-center cursor-pointer gap-3 px-8 py-4 bg-[#013228] hover:bg-[#06352c] text-white rounded-full font-bold text-xs tracking-widest transition-all">
-            CHECK MORE FAQ <ArrowRight size={16} />
-          </button>
         </div>
 
         {/* --- Right Column: Accordion --- */}
