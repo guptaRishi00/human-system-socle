@@ -45,12 +45,12 @@ export default function PlatformBenefits() {
 
               {/* Image Container / Browser Frame */}
               <div className="relative bg-white rounded-2xl border border-gray-100 overflow-hidden">
-                <div className="aspect-4/4 relative">
+                <div className="aspect-4/5 relative">
                   <Image
-                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80"
+                    src="/1.jpg"
                     alt="Human Systems Dashboard"
                     fill
-                    className="object-cover object-top"
+                    className="object-cover"
                   />
                 </div>
               </div>

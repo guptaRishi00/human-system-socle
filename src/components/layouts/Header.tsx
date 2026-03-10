@@ -3,13 +3,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
-import { IoIosArrowRoundForward } from "react-icons/io";
+import { IoIosArrowRoundForward, IoIosArrowDown } from "react-icons/io";
 import { HiOutlineMenuAlt3, HiOutlineX } from "react-icons/hi";
 
 export default function Header() {
   const headerRef = useRef<HTMLElement | null>(null);
   const lastScroll = useRef(0);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
 
   useEffect(() => {
     const header = headerRef.current;
@@ -54,6 +55,15 @@ export default function Header() {
     { name: "Modules", href: "/modules" },
     { name: "Pricing", href: "/pricing" },
     { name: "Blog", href: "/blog" },
+    {
+      name: "Resources",
+      href: "#",
+      dropdown: [
+        { name: "Help Center", href: "/help" },
+        { name: "Community", href: "/community" },
+        { name: "Documentation", href: "/docs" }
+      ]
+    },
     { name: "Contact Us", href: "/contact" },
   ];
 
@@ -77,13 +87,35 @@ export default function Header() {
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-10">
           {navLinks.map((link, index) => (
-            <Link
-              key={index}
-              href={link.href}
-              className="font-semibold text-white/90 hover:text-[#E3FFCD] transition-colors py-4"
-            >
-              {link.name}
-            </Link>
+            link.dropdown ? (
+              <div key={index} className="relative group py-4">
+                <button className="flex items-center gap-1 font-semibold text-white/90 hover:text-[#E3FFCD] transition-colors cursor-pointer">
+                  {link.name}
+                  <IoIosArrowDown size={16} className="transition-transform duration-300 group-hover:rotate-180" />
+                </button>
+                <div className="absolute top-12 left-0 mt-2 w-48 bg-white border border-gray-100 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left translate-y-2 group-hover:translate-y-0 overflow-hidden">
+                  <div className="py-2 flex flex-col">
+                    {link.dropdown.map((sublink, i) => (
+                      <Link
+                        key={i}
+                        href={sublink.href}
+                        className="px-4 py-3 text-sm font-medium text-[#013228] hover:bg-gray-50 hover:text-[#013228] transition-colors"
+                      >
+                        {sublink.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <Link
+                key={index}
+                href={link.href}
+                className="font-semibold text-white/90 hover:text-[#E3FFCD] transition-colors py-4"
+              >
+                {link.name}
+              </Link>
+            )
           ))}
         </nav>
 
@@ -116,30 +148,69 @@ export default function Header() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 bg-[#013228] z-[99] transition-all duration-500 ease-in-out lg:hidden ${
-          mobileOpen
+        className={`fixed inset-0 bg-[#013228] z-[99] transition-all duration-500 ease-in-out lg:hidden ${mobileOpen
             ? "opacity-100 visible"
             : "opacity-0 invisible pointer-events-none"
-        }`}
+          }`}
         style={{ top: 0 }}
       >
         <div className="flex flex-col h-full pt-24 px-8 pb-8">
           {/* Nav links */}
-          <nav className="flex-1 flex flex-col gap-2">
+          <nav className="flex-1 flex flex-col gap-2 overflow-y-auto">
             {navLinks.map((link, index) => (
-              <Link
-                key={index}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className={`text-3xl font-bold text-white/90 hover:text-[#E3FFCD] transition-all duration-300 py-4 border-b border-white/5 ${
-                  mobileOpen
-                    ? "translate-x-0 opacity-100"
-                    : "-translate-x-8 opacity-0"
-                }`}
-                style={{ transitionDelay: `${index * 75}ms` }}
-              >
-                {link.name}
-              </Link>
+              link.dropdown ? (
+                <div key={index} className="flex flex-col border-b border-white/5 py-4">
+                  <button
+                    onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
+                    className={`flex items-center justify-between text-3xl font-bold text-white/90 hover:text-[#E3FFCD] transition-all duration-300 w-full text-left ${mobileOpen
+                        ? "translate-x-0 opacity-100"
+                        : "-translate-x-8 opacity-0"
+                      }`}
+                    style={{ transitionDelay: `${index * 75}ms` }}
+                  >
+                    <span>{link.name}</span>
+                    <IoIosArrowDown
+                      size={24}
+                      className={`transition-transform duration-300 ${mobileDropdownOpen ? "rotate-180 text-[#E3FFCD]" : ""}`}
+                    />
+                  </button>
+                  <div
+                    className={`flex flex-col pl-4 overflow-hidden transition-all duration-300 ${mobileDropdownOpen ? "max-h-[200px] mt-4 opacity-100" : "max-h-0 opacity-0"
+                      }`}
+                  >
+                    {link.dropdown.map((sublink, i) => (
+                      <Link
+                        key={i}
+                        href={sublink.href}
+                        onClick={() => {
+                          setMobileOpen(false);
+                          setMobileDropdownOpen(false);
+                        }}
+                        className={`text-xl font-medium text-white/70 hover:text-[#E3FFCD] py-2 transition-colors ${mobileOpen
+                            ? "translate-x-0 opacity-100"
+                            : "-translate-x-4 opacity-0"
+                          }`}
+                        style={{ transitionDelay: `${index * 75 + (i + 1) * 75}ms` }}
+                      >
+                        {sublink.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <Link
+                  key={index}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className={`text-3xl font-bold text-white/90 hover:text-[#E3FFCD] transition-all duration-300 py-4 border-b border-white/5 ${mobileOpen
+                      ? "translate-x-0 opacity-100"
+                      : "-translate-x-8 opacity-0"
+                    }`}
+                  style={{ transitionDelay: `${index * 75}ms` }}
+                >
+                  {link.name}
+                </Link>
+              )
             ))}
           </nav>
 

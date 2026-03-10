@@ -21,15 +21,15 @@ export default async function BlogDetailPage({
                 <div className="max-w-7xl mx-auto flex items-center justify-between">
                     <Link
                         href="/blog"
-                        className="group flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase text-gray-400 hover:text-emerald-600 transition-colors"
+                        className="group flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase text-[#005653]/60 hover:text-[#01dc82] transition-colors"
                     >
                         <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
                         Back to Journal
                     </Link>
-                    <div className="hidden md:flex items-center gap-2 text-xs font-medium text-gray-400">
+                    <div className="hidden md:flex items-center gap-2 text-xs font-medium text-[#005653]/60">
                         <span>Blog</span>
                         <ChevronRight size={12} />
-                        <span className="text-gray-900">{blog.category}</span>
+                        <span className="text-[#005653] font-bold">{blog.category}</span>
                     </div>
                 </div>
             </nav>
@@ -38,24 +38,24 @@ export default async function BlogDetailPage({
             <header className="pt-16 pb-12 px-6">
                 <div className="max-w-4xl mx-auto text-center">
                     {/* Category Tag */}
-                    <span className="inline-block px-4 py-1.5 mb-8 text-[10px] font-bold tracking-[0.3em] uppercase border border-emerald-100 bg-emerald-50/50 text-emerald-700 rounded-full">
+                    <span className="inline-block px-4 py-1.5 mb-8 text-[10px] font-bold tracking-[0.3em] uppercase border border-[#01dc82]/30 bg-[#009b93]/10 text-[#009b93] rounded-full">
                         {blog.category}
                     </span>
 
                     {/* The Title - Bold, No Italics */}
-                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900 mb-8 leading-[1.1]">
+                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[#005653] mb-8 leading-[1.1]">
                         {blog.title}
                     </h1>
 
                     {/* Excerpt/Sub-headline */}
-                    <p className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed mb-12">
+                    <p className="text-lg md:text-xl text-[#005653]/80 max-w-2xl mx-auto leading-relaxed mb-12">
                         {blog.excerpt}
                     </p>
 
                     {/* Metadata Bar */}
                     <div className="flex flex-wrap items-center justify-center gap-y-4 gap-x-8 py-6 border-y border-gray-100">
                         <div className="flex items-center gap-3">
-                            <div className="w-8 h-8 rounded-full bg-emerald-100 relative overflow-hidden ring-2 ring-white">
+                            <div className="w-8 h-8 rounded-full bg-[#009b93]/10 relative overflow-hidden ring-2 ring-white">
                                 <Image
                                     src={blog.author.avatar}
                                     alt={blog.author.name}
@@ -64,16 +64,16 @@ export default async function BlogDetailPage({
                                     unoptimized
                                 />
                             </div>
-                            <span className="text-sm font-bold text-gray-900">{blog.author.name}</span>
+                            <span className="text-sm font-bold text-[#005653]">{blog.author.name}</span>
                         </div>
 
-                        <div className="flex items-center gap-6 text-xs font-bold tracking-widest text-gray-400 uppercase">
+                        <div className="flex items-center gap-6 text-xs font-bold tracking-widest text-[#005653]/60 uppercase">
                             <span className="flex items-center gap-2">
-                                <Calendar size={14} className="text-emerald-500" />
+                                <Calendar size={14} className="text-[#01dc82]" />
                                 {blog.date}
                             </span>
                             <span className="flex items-center gap-2">
-                                <Clock size={14} className="text-emerald-500" />
+                                <Clock size={14} className="text-[#01dc82]" />
                                 {blog.readTime}
                             </span>
                         </div>
@@ -100,10 +100,10 @@ export default async function BlogDetailPage({
             {/* 4. Article Body */}
             <article className="max-w-6xl mx-auto px-6 pb-32">
                 <div className="prose prose-lg md:prose-xl prose-emerald 
-                    prose-headings:text-gray-900 prose-headings:font-bold prose-headings:tracking-tight
-                    prose-p:text-gray-600 prose-p:leading-[1.8] prose-p:mb-8
-                    prose-strong:text-gray-900
-                    prose-blockquote:border-emerald-500 prose-blockquote:bg-emerald-50/30 prose-blockquote:py-2 prose-blockquote:rounded-r-xl">
+                    prose-headings:text-[#005653] prose-headings:font-bold prose-headings:tracking-tight
+                    prose-p:text-[#005653]/80 prose-p:leading-[1.8] prose-p:mb-8
+                    prose-strong:text-[#005653]
+                    prose-blockquote:border-[#01dc82] prose-blockquote:bg-[#009b93]/5 prose-blockquote:py-2 prose-blockquote:rounded-r-xl">
 
                     {blog.content.split('\n').map((paragraph, idx) => {
                         if (!paragraph.trim()) return null;
@@ -115,17 +115,17 @@ export default async function BlogDetailPage({
 
                 {/* Footer Bio */}
                 <footer className="mt-20 pt-16 border-t border-gray-100">
-                    <div className="flex flex-col md:flex-row items-center gap-8 p-8 bg-gray-50 rounded-3xl border border-gray-100">
+                    <div className="flex flex-col md:flex-row items-center gap-8 p-8 bg-white rounded-3xl border border-[#009b93]/20 shadow-sm shadow-[#009b93]/5">
                         <div className="w-16 h-16 rounded-full relative overflow-hidden shrink-0">
                             <Image src={blog.author.avatar} alt={blog.author.name} fill className="object-cover" unoptimized />
                         </div>
                         <div className="text-center md:text-left">
-                            <h4 className="text-lg font-bold text-gray-900">{blog.author.name}</h4>
-                            <p className="text-gray-500 text-sm leading-relaxed">{blog.author.role}</p>
+                            <h4 className="text-lg font-bold text-[#005653]">{blog.author.name}</h4>
+                            <p className="text-[#005653]/70 text-sm leading-relaxed">{blog.author.role}</p>
                         </div>
                         <Link
                             href="/blog"
-                            className="md:ml-auto px-6 py-2 bg-white border border-gray-200 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-gray-900 hover:text-white transition-all"
+                            className="md:ml-auto px-6 py-2 bg-white border border-[#009b93]/30 rounded-full text-xs font-bold uppercase tracking-widest text-[#005653] hover:bg-[#005653] hover:text-white transition-all shadow-sm"
                         >
                             All Posts
                         </Link>

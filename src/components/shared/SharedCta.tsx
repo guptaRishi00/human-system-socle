@@ -5,17 +5,17 @@ import { ArrowRight } from "lucide-react";
 
 const SharedCta = () => (
   <section className="py-24 px-6">
-    <div className="max-w-7xl mx-auto bg-[#E3FFCD] rounded-[40px] p-12 lg:p-20 text-center relative overflow-hidden group">
+    <div className="max-w-7xl mx-auto rounded-[40px] p-12 lg:p-20 text-center relative overflow-hidden group">
       {/* --- Background Image & Overlay --- */}
       <div className="absolute inset-0 z-0">
         <Image
           src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80" // Replace with your image
           alt="Team Collaboration"
           fill
-          className="object-cover opacity-40 grayscale group-hover:scale-105 transition-transform duration-700"
+          className="object-cover opacity-30 grayscale group-hover:scale-105 transition-transform duration-700"
         />
         {/* Subtle gradient to ensure the center text pop */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#E3FFCD]/70 via-transparent to-[#E3FFCD]/70" />
+        {/* <div className="absolute inset-0 bg-gradient-to-b from-[#E3FFCD]/70 via-transparent to-[#E3FFCD]/70" /> */}
       </div>
 
       {/* --- Content --- */}
