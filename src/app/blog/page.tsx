@@ -59,7 +59,7 @@ export default function BlogListingPage() {
                 <span className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4">
                   Featured Article
                 </span>
-                <h2 className="text-2xl md:text-3xl font-bold mb-4 text-[#013228] group-hover:text-[#85D036] transition-colors">
+                <h2 className="text-2xl md:text-3xl font-bold mb-4 text-[#013228] transition-colors">
                   {featuredBlog.title}
                 </h2>
                 <p className="text-gray-600 mb-8 line-clamp-3">
@@ -68,7 +68,7 @@ export default function BlogListingPage() {
                 </p>
                 <Link
                   href={`/blog/${featuredBlog.slug}`}
-                  className="inline-flex items-center gap-2 font-bold text-sm uppercase tracking-wider text-[#013228] group/link hover:text-[#85D036] transition-colors"
+                  className="inline-flex items-center gap-2 font-bold text-sm uppercase tracking-wider text-[#013228] group/link transition-colors"
                 >
                   Read Article{" "}
                   <ChevronRight

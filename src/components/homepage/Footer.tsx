@@ -75,11 +75,11 @@ const Footer = () => {
           <div className="space-y-6">
             <Link href="/">
               <Image
-                src="/logo-6.svg"
+                src="/logo-7.svg"
                 alt="Human Systems Logo"
                 width={180}
                 height={40}
-                className="w-32 sm:w-40"
+                className="w-32 sm:w-40 mb-10 mt-3"
                 priority
               />
             </Link>

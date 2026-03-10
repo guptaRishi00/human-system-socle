@@ -3,12 +3,21 @@ import Link from "next/link";
 import { ArrowRight, Clock } from "lucide-react";
 import { BlogPost } from "@/data/blogs";
 
-export default function BlogCard({ blog, disableHoverEffect = false }: { blog: BlogPost; disableHoverEffect?: boolean }) {
+export default function BlogCard({
+  blog,
+  disableHoverEffect = false,
+}: {
+  blog: BlogPost;
+  disableHoverEffect?: boolean;
+}) {
   return (
-    <article className={`group relative bg-white rounded-3xl p-5 border flex flex-col transition-all duration-300 overflow-hidden h-full ${disableHoverEffect
-        ? "border-transparent"
-        : "border-gray-200 hover:border-[#013228] hover:shadow-xl"
-      }`}>
+    <article
+      className={`group relative bg-white rounded-3xl p-5 border flex flex-col transition-all duration-300 overflow-hidden h-full ${
+        disableHoverEffect
+          ? "border-transparent"
+          : "border-gray-200 hover:border-[#013228] hover:shadow-xl"
+      }`}
+    >
       {/* Category Badge */}
       <div className="absolute top-8 right-8 z-10 bg-[#E3FFCD] text-[#013228] text-[10px] font-black tracking-wider px-3 py-1.5 rounded-full shadow-sm opacity-90 group-hover:opacity-100 transition-opacity uppercase">
         {blog.category}
@@ -43,7 +52,7 @@ export default function BlogCard({ blog, disableHoverEffect = false }: { blog: B
           </span>
         </div>
 
-        <h3 className="text-xl font-bold text-[#013228] mb-3 line-clamp-2 leading-tight group-hover:text-[#85D036] transition-colors">
+        <h3 className="text-xl font-bold text-[#013228] mb-3 line-clamp-2 leading-tight">
           <Link href={`/blog/${blog.slug}`}>
             <span className="absolute inset-0" />
             {blog.title}

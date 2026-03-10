@@ -25,7 +25,7 @@ export default function ResourceCard({ resource, basePath }: ResourceCardProps) 
                     </span>
                 </div>
 
-                <h3 className="text-xl font-bold text-[#013228] mb-3 line-clamp-2 leading-tight group-hover:text-[#85D036] transition-colors">
+                <h3 className="text-xl font-bold text-[#013228] mb-3 line-clamp-2 leading-tight transition-colors">
                     <Link href={`${basePath}/${resource.slug}`}>
                         <span className="absolute inset-0" />
                         {resource.title}

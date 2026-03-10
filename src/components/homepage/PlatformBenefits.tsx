@@ -47,7 +47,7 @@ export default function PlatformBenefits() {
               <div className="relative bg-white rounded-2xl border border-gray-100 overflow-hidden">
                 <div className="aspect-4/5 relative">
                   <Image
-                    src="/1.jpg"
+                    src="/2.jpg"
                     alt="Human Systems Dashboard"
                     fill
                     className="object-cover"
