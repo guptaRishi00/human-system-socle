@@ -16,7 +16,11 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: "Human Systems - The All-in-One HR SaaS Platform",
-  description: "Human Systems empowers businesses with a scalable, secure, and modular HR platform.",
+  description:
+    "Human Systems empowers businesses with a scalable, secure, and modular HR platform.",
+  icons: {
+    icon: "/favicon2.png", // Point to the PNG instead
+  },
 };
 
 export default function RootLayout({
