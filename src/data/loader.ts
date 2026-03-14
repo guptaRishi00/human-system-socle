@@ -26,7 +26,6 @@ export async function getPageData(slug: string) {
   const BASE_URL = getStrapiURL();
   const query = PageQuery(slug);
   const url = `${BASE_URL}/api/pages?${query}`;
-  const response = await fetchAPI(url, { method: "GET" });
   return await fetchAPI(url, {
     method: "GET",
     next: { tags: ["strapi-data"] }, // Tag this request

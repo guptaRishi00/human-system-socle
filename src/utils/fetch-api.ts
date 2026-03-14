@@ -35,25 +35,10 @@ export async function fetchAPI(url: string, options: FetchAPIOptions) {
 
     if (contentType && contentType.includes("application/json")) {
       return await response.json();
-    } else {
-      return { status: response.status, statusText: response.statusText };
     }
+    return { status: response.status, statusText: response.statusText };
   } catch (error) {
-    console.error(`Error ${method} data:`, error);
-
-    // Provide more specific error messages
-    if (error instanceof TypeError && error.message.includes("fetch")) {
-      throw new Error(
-        "Network error: Unable to connect to the server. Please check your internet connection."
-      );
-    }
-
-    if (error instanceof Error) {
-      throw error;
-    }
-
-    throw new Error(
-      `An unexpected error occurred while making ${method} request.`
-    );
+    console.error(`Error ${method} data from ${url}:`, error);
+    return null;
   }
 }

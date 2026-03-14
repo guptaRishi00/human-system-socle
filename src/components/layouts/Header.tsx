@@ -5,6 +5,7 @@ import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import { IoIosArrowRoundForward, IoIosArrowDown } from "react-icons/io";
 import { HiOutlineMenuAlt3, HiOutlineX } from "react-icons/hi";
+import LanguageSwitcher from "@/components/shared/LanguageSwitcher";
 
 export default function Header() {
   const lastScroll = useRef(0);
@@ -130,6 +131,7 @@ export default function Header() {
 
           {/* Desktop CTA + Mobile toggle */}
           <div className="flex items-center gap-4">
+            <LanguageSwitcher />
             <Link href="/contact" className="hidden sm:block">
               <button className="flex items-center gap-2 bg-white rounded-full py-3 px-6 text-xs uppercase tracking-[0.1em] font-bold text-[#013228] cursor-pointer hover:bg-[#d4ffb8] transition-colors group">
                 Get Started
