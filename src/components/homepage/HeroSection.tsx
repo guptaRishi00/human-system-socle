@@ -11,7 +11,7 @@ export default function HeroSection() {
       className="relative w-full min-h-[85vh] md:min-h-screen rounded-t-[30px] md:rounded-t-[50px] flex items-center overflow-hidden bg-cover bg-center"
       style={{ backgroundImage: `url(${bgImage})` }}
     >
-      <div className="w-full max-w-[85rem] mx-auto px-6 md:px-8 py-20 md:py-0">
+      <div className="w-full max-w-[85rem] mx-auto px-6 md:px-8 py-20 lg:py-0 flex flex-col lg:flex-row items-center justify-between gap-10">
         {/* Left Content */}
         <div className="flex items-start flex-col gap-5 md:gap-8 max-w-full sm:max-w-lg lg:max-w-xl relative z-10">
           <div className="w-fit px-3 md:px-4 py-1 border border-gray-900 rounded-full">
@@ -48,18 +48,18 @@ export default function HeroSection() {
             </Link>
           </div>
         </div>
-      </div>
 
-      {/* Right Image - hidden below lg */}
-      <div className="absolute ltr:right-0 rtl:left-0 top-1/2 -translate-y-1/2 hidden lg:block ltr:translate-x-10 rtl:-translate-x-10 ltr:rounded-l-2xl rtl:rounded-r-2xl overflow-hidden">
-        <Image
-          src="/image3.png"
-          alt="Hero Illustration"
-          width={500}
-          height={500}
-          className="w-[30rem] xl:w-[46rem] h-auto object-contain"
-          priority
-        />
+        {/* Right Image - now visible on mobile */}
+        <div className="relative lg:absolute ltr:right-0 rtl:left-0 lg:top-1/2 lg:-translate-y-1/2 w-full lg:w-auto flex justify-center lg:block ltr:lg:translate-x-10 rtl:lg:-translate-x-10 ltr:rounded-l-2xl rtl:rounded-r-2xl overflow-hidden z-0">
+          <Image
+            src="/image3.png"
+            alt="Hero Illustration"
+            width={500}
+            height={500}
+            className="w-full max-w-[20rem] sm:max-w-[25rem] lg:max-w-none lg:w-[30rem] xl:w-[46rem] h-auto object-contain"
+            priority
+          />
+        </div>
       </div>
     </div>
   );
