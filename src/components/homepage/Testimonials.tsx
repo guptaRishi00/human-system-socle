@@ -16,40 +16,18 @@ interface Testimonial {
 export default function InfiniteTestimonials() {
   const testimonials: Testimonial[] = [
     {
-      img: "https://media.licdn.com/dms/image/v2/D4E03AQG4hOK0_aNyjQ/profile-displayphoto-shrink_400_400/B4EZRzewgrGgAk-/0/1737104231875?e=1775692800&v=beta&t=mtkkApQ-bbmYHJhBu935_ih8GLGNuoyrJHjCFE_lrx0",
-      role: "Présidente fondatrice de l'IDRECOM",
-      name: "Narcise THÉRÈSE",
-      company: "IDRECOM",
-      content: "Human Systems has completely transformed how we manage our HR operations. The leave management is seamless.",
-    },
-    {
-      img: "https://media.licdn.com/dms/image/v2/D4D03AQGKXDSiuNsfWA/profile-displayphoto-scale_400_400/B4DZpqVpfKIkAk-/0/1762720653795?e=1775692800&v=beta&t=8ulxiyfGsvlmAcdcc9MdupfS5QkThayYRXf6Oswk_08",
-      role: "Directeur commercial chez",
-      name: "Jean Paul DZIME BIBANG",
-      company: "ONEDISTRIB partenaire Alliance des énergies",
-      content: "The employee self-service portal has dramatically reduced our HR team's workload. Highly recommended.",
-    },
-    {
-      img: "https://media.licdn.com/dms/image/v2/C4D03AQEf8BRCvOlg_g/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1544133046397?e=1775692800&v=beta&t=cGduHRo9PnDv7NV5gPDDacMjwoPHIwgS72l_JES0mQ8",
-      role: "Responsable Travaux Comptable et Fiscale",
-      name: "Kévin M",
-      company: "LA BOUSSOLE ",
-      content: "Payroll automation used to be a nightmare. Now it's a single click. A game changer for our finance team.",
-    },
-    {
-      img: "https://media.licdn.com/dms/image/v2/D4E03AQHB58_fRta2uw/profile-displayphoto-shrink_400_400/B4EZkLvnzvIsAk-/0/1756838657783?e=1775692800&v=beta&t=Jz-i9obYGww8nHTriWkxkK-7d0BhgGD_oarVTTlvn5c",
-      role: "chef d’entreprise",
-      name: "Dominique SARR EXAPAYE",
-      company: "EXAPAYE",
-      content: "The interface is so intuitive that our employees didn't even need training. Best HR software we've used.",
-    },
-    
-     {
       img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600",
       role: "Directrice chez Esprit Famille",
       name: "Leila Mely",
       company: "Esprit Famille",
       content: "The interface is so intuitive that our employees didn't even need training. Best HR software we've used.",
+    },
+     {
+      img: "https://media.licdn.com/dms/image/v2/D4D03AQGKXDSiuNsfWA/profile-displayphoto-scale_400_400/B4DZpqVpfKIkAk-/0/1762720653795?e=1775692800&v=beta&t=8ulxiyfGsvlmAcdcc9MdupfS5QkThayYRXf6Oswk_08",
+      role: "Directeur commercial chez",
+      name: "Jean Paul DZIME BIBANG",
+      company: "ONEDISTRIB partenaire Alliance des énergies",
+      content: "The employee self-service portal has dramatically reduced our HR team's workload. Highly recommended.",
     },
      {
       img: "https://media.licdn.com/dms/image/v2/C4E03AQFTO3FFKbrYWA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1516857773658?e=1775692800&v=beta&t=bFRdO7hWewhoNDkVgtJAbt-WdWh_jpRJKEfQmLqGI60",
@@ -58,6 +36,32 @@ export default function InfiniteTestimonials() {
       company: "Creative Pulse",
       content: "The interface is so intuitive that our employees didn't even need training. Best HR software we've used.",
     },
+     {
+      img: "https://media.licdn.com/dms/image/v2/D4E03AQHB58_fRta2uw/profile-displayphoto-shrink_400_400/B4EZkLvnzvIsAk-/0/1756838657783?e=1775692800&v=beta&t=Jz-i9obYGww8nHTriWkxkK-7d0BhgGD_oarVTTlvn5c",
+      role: "chef d’entreprise",
+      name: "Dominique SARR EXAPAYE",
+      company: "EXAPAYE",
+      content: "The interface is so intuitive that our employees didn't even need training. Best HR software we've used.",
+    },
+    {
+      img: "https://media.licdn.com/dms/image/v2/D4E03AQG4hOK0_aNyjQ/profile-displayphoto-shrink_400_400/B4EZRzewgrGgAk-/0/1737104231875?e=1775692800&v=beta&t=mtkkApQ-bbmYHJhBu935_ih8GLGNuoyrJHjCFE_lrx0",
+      role: "Présidente fondatrice de l'IDRECOM",
+      name: "Narcise THÉRÈSE",
+      company: "IDRECOM",
+      content: "Human Systems has completely transformed how we manage our HR operations. The leave management is seamless.",
+    },
+   
+    {
+      img: "https://media.licdn.com/dms/image/v2/C4D03AQEf8BRCvOlg_g/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1544133046397?e=1775692800&v=beta&t=cGduHRo9PnDv7NV5gPDDacMjwoPHIwgS72l_JES0mQ8",
+      role: "Responsable Travaux Comptable et Fiscale",
+      name: "Kévin M",
+      company: "LA BOUSSOLE ",
+      content: "Payroll automation used to be a nightmare. Now it's a single click. A game changer for our finance team.",
+    },
+   
+    
+     
+    
   
   ];
 

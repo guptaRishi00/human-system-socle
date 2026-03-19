@@ -35,7 +35,7 @@ const LanguageSwitcher = () => {
         new window.google.translate.TranslateElement(
           {
             pageLanguage: "en",
-            includedLanguages: "en,fr,ar,hi,zh-CN",
+            includedLanguages: "en,fr,ar,hi,zh-CN,es,de,pt,it",
             layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
             autoDisplay: false,
           },
@@ -118,6 +118,10 @@ const LanguageSwitcher = () => {
     { code: "ar", name: "العربية", flag: "🇸🇦" },
     { code: "hi", name: "Hindi", flag: "🇮🇳" },
     { code: "zh-CN", name: "中文", flag: "🇨🇳" },
+    { code: "es", name: "Español", flag: "🇪🇸" },
+    { code: "de", name: "Deutsch", flag: "🇩🇪" },
+    { code: "pt", name: "Português", flag: "🇵🇹" },
+    { code: "it", name: "Italiano", flag: "🇮🇹" },
   ];
 
   return (
