@@ -73,45 +73,43 @@ export default function OurModules() {
         {/* Grid Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {modules.map((module, index) => (
-            <div
+            /* Replaced outer div with Link */
+            <Link
+              href="/modules"
               key={index}
               className="group relative bg-white border border-gray-300 p-10 rounded-[40px] 
-                         transition-all 
-                         hover:border-[#013228] 
-                         cursor-pointer flex flex-col h-full"
+                         transition-all hover:border-[#013228] cursor-pointer flex flex-col h-full"
             >
               {/* Icon */}
-              <div className="text-gray-900 group-hover:text-gray-900 mb-8 transition-all duration-500 transform group-hover:scale-110 origin-left">
+              <div className="text-gray-900 mb-8 transition-all duration-500 transform group-hover:scale-110 origin-left">
                 {module.icon}
               </div>
 
               {/* Title */}
-              <h3 className="text-2xl font-bold text-gray-900 group-hover:text-gray-900 mb-4 transition-colors duration-500">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 transition-colors duration-500">
                 {module.title}
               </h3>
 
               {/* Description */}
-              <p className="text-gray-500 group-hover:text-gray-500 mb-10 leading-relaxed transition-colors duration-500 flex-grow">
+              <p className="text-gray-500 mb-10 leading-relaxed transition-colors duration-500 flex-grow">
                 {module.description}
               </p>
 
-              {/* The "Read More" Full Button Transformation */}
-              <Link href={"/modules"}>
-                <div
-                  className="w-fit inline-flex items-center gap-3 px-0 py-2 rounded-full transition-all duration-500 ease-in-out
-                               group-hover:bg-[#013228] group-hover:px-6 group-hover:py-3"
-                >
-                  <span className="text-sm font-bold uppercase tracking-wider text-gray-900 group-hover:text-white transition-colors duration-500">
-                    Read More
-                  </span>
+              {/* The "Read More" Full Button Transformation (Removed inner Link) */}
+              <div
+                className="w-fit inline-flex items-center gap-3 px-0 py-2 rounded-full transition-all duration-500 ease-in-out
+                           group-hover:bg-[#013228] group-hover:px-6 group-hover:py-3 mt-auto"
+              >
+                <span className="text-sm font-bold uppercase tracking-wider text-gray-900 group-hover:text-white transition-colors duration-500">
+                  Read More
+                </span>
 
-                  <HiOutlineArrowNarrowRight
-                    size={20}
-                    className="text-gray-900 group-hover:text-white transition-all duration-500 group-hover:translate-x-1"
-                  />
-                </div>
-              </Link>
-            </div>
+                <HiOutlineArrowNarrowRight
+                  size={20}
+                  className="text-gray-900 group-hover:text-white transition-all duration-500 group-hover:translate-x-1"
+                />
+              </div>
+            </Link>
           ))}
         </div>
       </div>
